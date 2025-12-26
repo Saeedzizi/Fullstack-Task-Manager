@@ -1,0 +1,278 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+:root {
+  --bg: #121212;
+  --card: #1e1e1f;
+  --accent: #ffdb70;
+  --text: #fafafa;
+  --border: #383838;
+  --danger: #ff4d4d;
+}
+
+/* پایه تنظیمات */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Vazirmatn', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* این خط باعث می‌شود محتوا عمودی وسط بیاید */
+  min-height: 100vh;
+  margin: 0;
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+/* هدر داشبورد */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(30, 30, 31, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+
+/* کانتینرهای اصلی */
+.auth-container, .task-app {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 400px;
+  margin-top: 100px;
+  text-align: center;
+}
+
+/* استایل فیلدها و دکمه‌های فرم */
+/* استایل فیلدها با ایجاد فاصله */
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  background: #2b2b2c;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+  font-family: 'Vazirmatn';
+  margin-bottom: 15px; /* این خط باعث ایجاد فاصله بین اینپوت‌ها می‌شود */
+}
+/* ایجاد فاصله بین عنوان و اولین اینپوت */
+.auth-container h2, 
+.auth-container h3,
+.task-app h2 {
+  margin-bottom: 30px; /* فاصله مناسب از پایین عنوان */
+  font-weight: bold;
+  color: var(--text);
+}
+
+input:focus {
+  border-color: var(--accent);
+}
+
+/* دکمه‌های اصلی (ثبت نام و ورود) */
+.auth-container button, .btn-primary {
+  width: 100%;
+  height: 50px;
+  background: var(--accent);
+  color: #121212;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 219, 112, 0.3);
+}
+
+/* بخش ورودی تسک در داشبورد */
+.task-input-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.task-input-box input {
+  flex: 1; /* اینپوت فضای خالی را پر می‌کند */
+}
+
+/* دکمه افزودن در داشبورد */
+.task-input-box button {
+    width: 100px !important; /* اندازه ثابت */
+    height: 50px;
+    background-color: var(--accent) !important; /* رنگ زرد طلایی */
+    color: #121212 !important; /* رنگ متن مشکی */
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0 !important; /* حذف فاصله بالا برای هم‌ترازی */
+    transition: 0.3s;
+}
+
+.task-input-box button:hover {
+    background-color: #ffcc33 !important; /* کمی تیره تر هنگام هاور */
+    transform: scale(1.05);
+}
+
+/* استایل لیست تسک‌ها */
+#taskList {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* متن راست، سطل آشغال چپ */
+  background: #2b2b2c;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border-right: 4px solid var(--accent);
+  transition: 0.3s;
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.task-item span {
+  font-size: 15px;
+}
+
+.task-item.done {
+  opacity: 0.5;
+}
+
+.task-item.done span {
+  text-decoration: line-through;
+}
+
+/* دکمه حذف - اصلاح شده برای رفتن به چپ */
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: 0.3s;
+}
+
+.btn-delete ion-icon {
+  font-size: 22px;
+  width: auto; /* جلوگیری از تغییر سایز ناخواسته */
+}
+
+.btn-delete:hover {
+  color: var(--danger);
+  transform: scale(1.2);
+}
+
+/* چک‌باکس */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* دکمه خروج */
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 77, 77, 0.1);
+  color: var(--danger);
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: 1px solid var(--danger);
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.btn-logout:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* فوتر فرم‌ها */
+.auth-footer-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.auth-footer-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* انیمیشن */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.main-footer {
+    width: 100%;
+    padding: 30px 0;
+    background: var(--card); /* هم‌رنگ باکس‌ها */
+    border-top: 1px solid var(--border);
+    margin-top: auto; /* اگر صفحه بلند باشد فوتر را پایین نگه می‌دارد */
+    text-align: center;
+    color: #888;
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-content strong {
+    color: var(--accent); /* رنگ طلایی برای نام تو */
+}
+
+.tech-stack {
+    margin: 10px 0;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.tech-stack span {
+    color: var(--text);
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.copyright {
+    font-size: 11px !important;
+    opacity: 0.6;
+}
